@@ -6,12 +6,13 @@ import {
   Request,
   Response,
   Inject,
+  forwardRef,
 } from '@nestjs/common';
 import * as bcrypt from 'bcrypt';
 
 @Controller('login')
 export class LoginController {
-  constructor(@Inject('AuthService') private readonly authService) {}
+  constructor() {}
 
   @Get()
   @Render('users/login/views/login')
