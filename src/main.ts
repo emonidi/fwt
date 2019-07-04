@@ -2,7 +2,7 @@ import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import { join } from 'path';
 import bodyParser = require('body-parser');
-import * as passport from 'passport';
+import * as session from 'express-session';
 
 async function bootstrap() {
   const app: any = await NestFactory.create(AppModule);
@@ -14,8 +14,8 @@ async function bootstrap() {
       extended: true,
     }),
   );
-  app.use(passport.initialize());
-  app.use(passport.session());
+
+  app.use(session({ secret: 'yahoo!' }));
   app.enableCors();
   app.useStaticAssets(join(__dirname, '..', 'public'));
   app.setBaseViewsDir(join(__dirname, '..', 'src'));

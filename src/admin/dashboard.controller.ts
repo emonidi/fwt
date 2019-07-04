@@ -1,9 +1,20 @@
-import { Get, Post, Controller, Render } from '@nestjs/common';
-import { AuthGuard } from '@nestjs/passport';
+import {
+  Get,
+  Post,
+  Controller,
+  Render,
+  Request,
+  UseGuards,
+  Inject,
+} from '@nestjs/common';
+import { AuthGuard } from '../auth/auth.guard';
 
 @Controller('admin/dashboard')
 export class DashboardController {
-  @Get()
+  @Get('/')
   @Render('admin/views/dashboard')
-  root() {}
+  @UseGuards(new AuthGuard())
+  root(@Request() req) {
+    console.log(req);
+  }
 }
