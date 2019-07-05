@@ -1,0 +1,16 @@
+extends layout
+
+block content
+  .container
+    .row
+      each city in cities
+        .col-md-4
+          - var src = city.image
+          .card(style='margin-top:1rem')
+            img.card-image-top(src=src)
+            .card-body
+              h5.card-title #{city.name}
+              .card-description #{city.description}
+            hr  
+            .card-footer
+              a.card-link(href=`cities/${city.id}`) Edit

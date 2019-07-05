@@ -1,0 +1,32 @@
+extends layout
+
+block content
+  - var headerImage = city.image
+  .page-header.page-header-small(style={'background-image':'url('+headerImage+');min-height:25vh!important'})
+    .filter
+    .content-center
+      .container
+        .motto
+          h2.title #{city.name}
+  .wrapper
+    section.section-gray.pricing-5
+      form.form(method="POST")
+        .container
+          .row
+            .col-md-6
+              //- input(type="hidden" name="_id" value=city._id)
+              .form-group
+                label.control-label Name
+                input.form-control(type="text" name="name" value=city.name)
+                .row
+            .col-md-6
+              .form-group
+                label.control-label Image
+                input.form-control(type="text" name="image" value=city.image)
+            .col-md-12
+              .form-group
+                label.control-label Description
+                textarea.form-control(rows=10 name='description') #{city.description}
+          .row
+            .col-md-3.push-left
+              input.btn.btn-primary(type="submit" value="Save")

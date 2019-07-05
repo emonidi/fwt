@@ -11,4 +11,7 @@ export const CitiesSchema = new mongoose.Schema({
     uniqe: true,
     required: [true, 'Please upload an image'],
   },
+  description: {
+    type: String,
+  },
 });
