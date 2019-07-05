@@ -1,0 +1,24 @@
+extends layout
+
+block content
+  .wrapper
+    section.section-gray.pricing-5
+      form.form(method="POST")
+        .container
+          .row
+            .col-md-6
+              .form-group
+                label.control-label Name
+                input.form-control(type="text" name="name")
+                .row
+            .col-md-6
+              .form-group
+                label.control-label Image
+                input.form-control(type="text" name="image")
+            .col-md-12
+              .form-group
+                label.control-label Description
+                textarea.form-control(rows=10 name='description')
+          .row
+            .col-md-3.push-left
+              input.btn.btn-primary(type="submit" value="Save")

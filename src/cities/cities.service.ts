@@ -5,6 +5,10 @@ import { InjectModel } from '@nestjs/mongoose';
 export class CitiesService {
   constructor(@InjectModel('cities') private model) {}
 
+  async add(city) {
+    return await this.model.create(city);
+  }
+
   async findAll() {
     return await this.model.find();
   }

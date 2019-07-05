@@ -7,10 +7,21 @@ block content
         .col-md-4
           - var src = city.image
           .card(style='margin-top:1rem')
-            img.card-image-top(src=src)
+            img.card-image-top(src=src style={minHeight:'120px'})
             .card-body
               h5.card-title #{city.name}
               .card-description #{city.description}
             hr  
             .card-footer
               a.card-link(href=`cities/${city.id}`) Edit
+    a.btn.btn-just-icon.btn-primary(
+      href="/admin/cities/add"
+      style={
+        position:'fixed',
+        bottom:'50px',
+        right:'50px',
+        'z-index':1000,
+        'box-shadow':'0 6px 10px -4px rgba(0,0,0,.15)'
+      }
+    )
+      i.nc-icon.nc-simple-add

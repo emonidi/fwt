@@ -7,8 +7,12 @@ import {
   Param,
   Post,
   Body,
+  Render,
+  UseGuards,
 } from '@nestjs/common';
-
+import { async } from 'rxjs/internal/scheduler/async';
+import { AuthGuard } from '../auth/auth.guard';
+@UseGuards(new AuthGuard())
 @Controller()
 export class CitiesControler {
   constructor(@Inject('CitiesService') private citiesService) {}
@@ -21,6 +25,18 @@ export class CitiesControler {
     } catch (e) {
       console.log(e);
     }
+  }
+
+  @Get('admin/cities/add')
+  @Render('admin/views/add_city')
+  root() {}
+
+  @Post('admin/cities/add')
+  async addCity(@Body() body, @Response() res) {
+    try {
+      const result = await this.citiesService.add(body);
+      res.redirect('/admin/cities');
+    } catch (e) {}
   }
 
   @Get('admin/cities/:id')
