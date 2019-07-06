@@ -15,7 +15,7 @@ import { AuthGuard } from '../auth/auth.guard';
 @UseGuards(new AuthGuard())
 @Controller()
 export class CitiesControler {
-  constructor(@Inject('CitiesService') private citiesService) {}
+  constructor(@Inject('CitiesService') private citiesService) { }
 
   @Get('admin/cities')
   async getCities(@Request() req, @Response() res) {
@@ -29,14 +29,16 @@ export class CitiesControler {
 
   @Get('admin/cities/add')
   @Render('admin/views/add_city')
-  root() {}
+  root() { }
 
   @Post('admin/cities/add')
   async addCity(@Body() body, @Response() res) {
     try {
-      const result = await this.citiesService.add(body);
+      const result = await this.citiesService.add(this.convertLocation(body));
       res.redirect('/admin/cities');
-    } catch (e) {}
+    } catch (e) {
+      console.log(e);
+    }
   }
 
   @Get('admin/cities/:id')
@@ -54,10 +56,23 @@ export class CitiesControler {
   ) {
     try {
       console.log(body);
-      const result = await this.citiesService.updateCity(id, body);
+      const result = await this.citiesService.updateCity(id, this.convertLocation(body));
       res.redirect('/admin/cities');
     } catch (e) {
       console.log(e);
     }
+  }
+
+  private convertLocation(body) {
+    body = {
+      ...body, location: {
+        type: 'Point',
+        coordinates: [parseFloat(body.lng), parseFloat(body.lat)],
+      },
+    };
+    delete body.lat;
+    delete body.lng;
+
+    return body;
   }
 }

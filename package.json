@@ -29,6 +29,7 @@
     "bcrypt": "3.0.6",
     "express-session": "1.16.2",
     "global": "^4.4.0",
+    "mapbox-gl": "^1.1.0",
     "mongoose": "5.6.2",
     "nest": "^0.1.6",
     "nest-cli": "^0.0.5",

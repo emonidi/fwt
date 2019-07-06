@@ -14,19 +14,27 @@ block content
         .container
           .row
             .col-md-6
-              //- input(type="hidden" name="_id" value=city._id)
               .form-group
                 label.control-label Name
-                input.form-control(type="text" name="name" value=city.name)
-                .row
-            .col-md-6
+                input.form-control(type="text" name="name" value=city.name data-city)
               .form-group
                 label.control-label Image
                 input.form-control(type="text" name="image" value=city.image)
-            .col-md-12
               .form-group
                 label.control-label Description
                 textarea.form-control(rows=10 name='description') #{city.description}
+              .form-group
+                label.control-label Longitude
+                input.form-control(type="text" name="lng" value=city.location ? city.location.coordinates[0] : '')
+              .form-group
+                label.control-label Latitude
+                input.form-control(type="text" name="lat" value=city.location ? city.location.coordinates[1] : '')
+            .col-md-6
+              #map
           .row
             .col-md-3.push-left
               input.btn.btn-primary(type="submit" value="Save")
+
+block scripts
+  <script src='https://api.mapbox.com/mapbox-gl-js/v1.0.0/mapbox-gl.js'></script>
+  <script src="../../js/map.utils.js"></script>

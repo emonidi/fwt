@@ -16,7 +16,7 @@ block content
               })
             .card-body
               h5.card-title #{city.name}
-              .card-description #{city.description}
+              .card-description(style='min-height:130px') #{city.description}
             hr  
             .card-footer
               a.card-link(href=`cities/${city.id}`) Edit
