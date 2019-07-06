@@ -4,10 +4,16 @@ block content
   .container
     .row
       each city in cities
-        .col-md-4
+        .col-md-3
           - var src = city.image
           .card(style='margin-top:1rem')
-            img.card-image-top(src=src style={minHeight:'120px'})
+            div.card-image-top.btn-primary(style={
+              'height':'180px',
+              'background-image':`url(${src})`,
+              'background-size':'cover',
+              'border-radius':'12px',
+              'box-shadow':'0 6px 10px -4px rgba(0,0,0,.15)'
+              })
             .card-body
               h5.card-title #{city.name}
               .card-description #{city.description}
