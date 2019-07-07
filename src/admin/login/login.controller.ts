@@ -22,9 +22,8 @@ export class LoginController {
 
   @Post('/')
   async authenticate(
-    @Request() req: Request,
-    @Response() res: express.Response,
-  ) {
+    @Request() req,
+    @Response() res: express.Response  ) {
     const { username, password } = req.body as any;
 
     try {

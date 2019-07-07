@@ -32,7 +32,6 @@ export class CitiesControler {
 
   @Get('admin/cities/add')
   @Render('admin/views/add_city')
-  root() { }
 
   @Post('admin/cities/add')
   async addCity(@Body() body, @Response() res) {
@@ -44,8 +43,6 @@ export class CitiesControler {
     }
   }
 
-
-  
   @Get('admin/cities/:id')
   async cityDetail(@Request() req, @Response() res, @Param('id') id) {
     const city = await this.citiesService.findByParam({ _id: id });
