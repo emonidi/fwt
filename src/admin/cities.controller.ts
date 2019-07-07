@@ -44,6 +44,8 @@ export class CitiesControler {
     }
   }
 
+
+  
   @Get('admin/cities/:id')
   async cityDetail(@Request() req, @Response() res, @Param('id') id) {
     const city = await this.citiesService.findByParam({ _id: id });
