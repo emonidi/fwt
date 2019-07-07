@@ -9,10 +9,13 @@ import {
   Body,
   Render,
   UseGuards,
+  UseFilters,
 } from '@nestjs/common';
 import { async } from 'rxjs/internal/scheduler/async';
 import { AuthGuard } from '../auth/auth.guard';
+import { AuthExceptionFilter } from './exception.fitler';
 @UseGuards(new AuthGuard())
+@UseFilters(new AuthExceptionFilter())
 @Controller()
 export class CitiesControler {
   constructor(@Inject('CitiesService') private citiesService) { }
