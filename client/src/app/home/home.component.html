@@ -2,7 +2,7 @@
     <div class="row">
         <div *ngFor="let city of cities" class="col-sm-12 col-md-3">
             <div>
-                <app-small-city-card [city]="city"></app-small-city-card>
+                <app-small-city-card (click)="showCity(city)" [city]="city"></app-small-city-card>
             </div>
           </div>
     </div>

@@ -10,6 +10,8 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { RouterModule, Routes }  from '@angular/router';
 import {AppRoutes} from './routes';
 import { HomeComponent } from './home/home.component';
+import { LocationStrategy, HashLocationStrategy } from '@angular/common';
+import { CityComponent } from './city/city.component';
 
 @NgModule({
   declarations: [
@@ -17,6 +19,7 @@ import { HomeComponent } from './home/home.component';
     SmallCityCardComponent,
     NavbarComponent,
     HomeComponent,
+    CityComponent,
   ],
   imports: [
     BrowserModule,
@@ -24,7 +27,7 @@ import { HomeComponent } from './home/home.component';
     HttpModule,
     RouterModule.forRoot(AppRoutes,{enableTracing:true}),
   ],
-  providers: [TestService],
+  providers: [TestService,{provide:LocationStrategy, useClass:HashLocationStrategy}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

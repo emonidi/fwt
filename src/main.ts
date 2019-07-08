@@ -18,6 +18,7 @@ async function bootstrap() {
   app.use(session({ secret: 'yahoo!' }));
   app.enableCors();
   app.useStaticAssets(join(__dirname, '..', 'public'));
+  app.useStaticAssets(join(__dirname, '..', 'public/client'));
   app.setBaseViewsDir(join(__dirname, '..', 'src'));
 
   await app.listen(process.env.PORT || 3000);
