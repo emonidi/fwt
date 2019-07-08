@@ -1,0 +1,9 @@
+<div class="container content">
+    <div class="row">
+        <div *ngFor="let city of cities" class="col-sm-12 col-md-3">
+            <div>
+                <app-small-city-card [city]="city"></app-small-city-card>
+            </div>
+          </div>
+    </div>
+</div>

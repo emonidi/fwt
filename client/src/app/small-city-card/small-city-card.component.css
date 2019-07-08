@@ -1,0 +1,16 @@
+.small-city-card{
+    min-height: 200px;
+    background-size: cover;
+    text-align: left;
+}
+
+.card-body{
+    display: flex;
+    justify-content: flex-end;
+    flex-direction: column;
+}
+
+.card-title{
+    color:#fff;
+    font-weight: normal;
+}
